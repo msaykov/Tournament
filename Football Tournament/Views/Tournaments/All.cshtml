@@ -1,0 +1,21 @@
+﻿@model AllTournamentsServiceModel;
+@{
+    ViewData["Title"] = "All Tournaments";
+}
+
+<div class="text-center">
+    <h1 class="item-title">@ViewData["Title"]</h1>
+</div>
+
+@foreach(var tournament in Model.Tournaments)
+{
+<div class="card" style="text-align:center;">
+    <h5 class="card-header">@tournament.Name</h5>
+    <div class="card-body">
+        <h5 class="card-title">@tournament.Category</h5>
+        <p class="card-text">In the tournament will take part kids born in @(DateTime.Now.Year - int.Parse(tournament.Category.Remove(0, 1)))</p>
+        <a asp-controller="Teams" asp-action="Add" class="btn btn-primary" role="button">Add Teams</a>
+    </div>
+</div>
+}
+
