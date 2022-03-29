@@ -2,6 +2,7 @@ namespace Football_Tournament
 {
     using Football_Tournament.Data;
     using Football_Tournament.Infrastructure;
+    using Football_Tournament.Services.Teams;
     using Football_Tournament.Services.Tournaments;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ namespace Football_Tournament
 
             services.AddControllersWithViews();
             services.AddTransient<ITournamentService, TournamentService>();
+            services.AddTransient<ITeamsService, TeamService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

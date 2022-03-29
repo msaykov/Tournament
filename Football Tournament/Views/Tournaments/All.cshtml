@@ -14,7 +14,8 @@
     <div class="card-body">
         <h5 class="card-title">@tournament.Category</h5>
         <p class="card-text">In the tournament will take part kids born in @(DateTime.Now.Year - int.Parse(tournament.Category.Remove(0, 1)))</p>
-        <a asp-controller="Teams" asp-action="Add" class="btn btn-primary" role="button">Add Teams</a>
+        <a asp-controller="Teams" asp-action="Add" asp-route-id="@tournament.Id" class="btn btn-primary" role="button">Add Team</a>
+        <a asp-controller="Teams" asp-action="All" asp-route-id="@tournament.Id" class="btn btn-primary" role="button">All Teams</a>
     </div>
 </div>
 }

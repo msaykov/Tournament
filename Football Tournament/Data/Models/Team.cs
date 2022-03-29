@@ -13,13 +13,13 @@
 
         public string Logo { get; set; }
 
-        public int GroupId { get; set; }
+        public int? GroupId { get; set; }
 
         public Group Group { get; set; }
 
-        //public int TournamentId { get; set; }
+        public int TournamentId { get; set; }
 
-        //public Tournament Tournament { get; set; }
+        public Tournament Tournament { get; set; }
 
 
     }

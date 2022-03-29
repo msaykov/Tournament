@@ -1,6 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ViewTeamsServiceModel;
 @{
+    ViewData["Title"] = "All Teams";
 }
-<h1>This page displays all teams in tournament</h1>
+
+<div class="text-center">
+    <h1 class="item-title">@ViewData["Title"]</h1>
+</div>
+
+@if (Model.Teams.Any())
+{
+
+    @foreach (var team in Model.Teams)
+    {
+        <div class="card" style="width: 12rem; margin: 10px; border: solid 2px black; display: inline-block">
+            <img src=@team.Logo class="card-img-top" style="height: auto;" alt=@team.Name>
+            <div class="card-body">
+                <h5 class="card-title" style="text-align: center">@team.Name</h5>
+            </div>
+        </div>
+    }
+    
+}
+else
+{
+    <h1>No teams to show</h1>
+}
+
+
+
+
+
+

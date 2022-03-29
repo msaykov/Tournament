@@ -17,6 +17,7 @@
             .Tournaments
             .Select(t => new TournamentInfoServiceModel
             {
+                Id = t.Id,
                 Name = t.Name,
                 Category = t.Category,
             })
