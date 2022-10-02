@@ -7,8 +7,12 @@
 
     public interface ITournamentService
     {
-        void CreateTournament(string name, string category);
+        void CreateTournament(string name, string category, int maxTeams);
 
         ICollection<TournamentInfoServiceModel> AllTournaments();
+
+        void SeedGroups(int id);
+
+        TournamentDetailsServiceModel Details(int id);
     }
 }

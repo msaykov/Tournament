@@ -1,0 +1,45 @@
+﻿@model TournamentDetailsServiceModel;
+@{
+    ViewData["Title"] = "Tournament Name";
+}
+
+@*<tr class="table-success">...</tr>
+    <tr class="table-warning">...</tr>
+
+    <td class="table-success">...</td>
+    <td class="table-warning">...</td>*@
+
+@foreach (var group in Model.Groups)
+{
+<table class="table table-primary table-striped">
+    <thead title=@group.Name>
+        <tr>
+            <th scope="col">Pos.</th>
+            <th scope="col">Team</th>
+            @*<th scope="col">MP</th>
+            <th scope="col">W</th>
+            <th scope="col">D</th>
+            <th scope="col">L</th>*@
+            <th scope="col">GF</th>
+            <th scope="col">GA</th>
+            <th scope="col">GD</th>
+            <th scope="col">Pts</th>
+        </tr>
+    </thead>
+    @foreach (var team in group.Teams)
+    {
+        <tbody>
+            <tr>
+                <td>#</td>
+                <td>@team.Name</td>
+                <td>@team.GoalsFwd</td>
+                <td>@team.GoalsAg</td>
+                <td>@team.GoalDifference</td>
+                <td>@team.Points</td>
+            </tr>
+        </tbody>
+    }
+</table>
+}
+
+

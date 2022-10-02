@@ -12,5 +12,17 @@
         public string Name { get; set; }
 
         public string Category { get; set; }
+
+        public int TeamsCount { get; set; }
+
+        public int GroupsCount { get; set; }
+
+        public int MaxTeams { get; set; }
+
+        public bool IsStarted { get; set; }
+
+        public bool IsFinished { get; set; }
+
+
     }
 }

@@ -21,7 +21,7 @@
                 return View(model);
             }
 
-            this.tournament.CreateTournament(model.Name, model.Category);
+            this.tournament.CreateTournament(model.Name, model.Category, model.MaxTeams);
 
 
             return RedirectToAction("All","Tournaments");
@@ -37,6 +37,25 @@
             });
         }
 
+        public IActionResult Start(int id)
+        {
+            this.tournament.SeedGroups(id);
+            return RedirectToAction("Details", "Tournaments", new { id = id });
+        }
+
+        public IActionResult Finish()
+        {
+            return View();
+        }
+
+        public IActionResult Details(int id)
+        => View(tournament.Details(id));
+        
+
+        public IActionResult History()
+        {
+            return View();
+        }
 
     }
 }

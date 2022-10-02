@@ -13,5 +13,8 @@
         [Required]
         [StringLength(CategoryMaxLength, MinimumLength = CategoryMinLength, ErrorMessage = NamesErrorMsg)]
         public string Category { get; set; }
+        [Required]
+        [Display(Name = "Maximum Teams")]
+        public int MaxTeams { get; set; }
     }
 }

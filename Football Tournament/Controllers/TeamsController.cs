@@ -14,7 +14,6 @@
 
         public IActionResult Add() => View();
 
-
         [HttpPost]
         public IActionResult Add(TeamViewModel model, int id)
         {

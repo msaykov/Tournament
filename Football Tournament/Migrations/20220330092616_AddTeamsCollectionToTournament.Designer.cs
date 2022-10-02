@@ -4,14 +4,16 @@ using Football_Tournament.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Football_Tournament.Migrations
 {
     [DbContext(typeof(TournamentDbContext))]
-    partial class TournamentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220330092616_AddTeamsCollectionToTournament")]
+    partial class AddTeamsCollectionToTournament
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,35 +48,14 @@ namespace Football_Tournament.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Fwr")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GoalDifference")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GoalsAg")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GoalsFwd")
-                        .HasColumnType("int");
-
                     b.Property<int?>("GroupId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsSelected")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Logo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Penalities")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Points")
-                        .HasColumnType("int");
 
                     b.Property<int>("TournamentId")
                         .HasColumnType("int");
@@ -97,15 +78,6 @@ namespace Football_Tournament.Migrations
 
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsFinished")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsStarted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("MaxTeams")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
