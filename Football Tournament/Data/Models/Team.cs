@@ -21,7 +21,7 @@
 
         public int GoalDifference { get; set; }
 
-        public int Penalities { get; set; }
+        public int Penalities { get; set; }   
 
         public int Fwr { get; set; }       // Fifa World Ranking
 

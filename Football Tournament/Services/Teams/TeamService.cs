@@ -41,29 +41,7 @@
             })
             .ToList();
 
-        //private int GetGroupId(int tournamentId)
-        //{
-        //    var groupEntity = this.data
-        //        .Groups
-        //        .FirstOrDefault();
-        //    if (groupEntity != null)
-        //    {
-        //        return groupEntity.Id;
-        //    }
-        //    else
-        //    {
-        //        groupEntity = new Group
-        //        {
-        //            Name = "Group A",
-        //            TournamentId = tournamentId,
-        //        };
-
-        //        this.data.Add(groupEntity);
-        //        var groupId = this.data.SaveChanges();
-        //        return groupId;
-        //    }
-
-        //}
+        
 
 
     }

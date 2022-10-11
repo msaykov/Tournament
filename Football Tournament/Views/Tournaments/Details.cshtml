@@ -3,34 +3,37 @@
     ViewData["Title"] = "Tournament Name";
 }
 
-@*<tr class="table-success">...</tr>
-    <tr class="table-warning">...</tr>
-
-    <td class="table-success">...</td>
-    <td class="table-warning">...</td>*@
 
 @foreach (var group in Model.Groups)
-{
-<table class="table table-primary table-striped">
-    <thead title=@group.Name>
+{    
+<table class="table table-primary">
+    <thead>
+        <tr>
+            <td colspan="6" style="text-align:center">@group.Name</td>
+        </tr>
         <tr>
             <th scope="col">Pos.</th>
             <th scope="col">Team</th>
             @*<th scope="col">MP</th>
-            <th scope="col">W</th>
-            <th scope="col">D</th>
-            <th scope="col">L</th>*@
+                <th scope="col">W</th>
+                <th scope="col">D</th>
+                <th scope="col">L</th>*@
             <th scope="col">GF</th>
             <th scope="col">GA</th>
             <th scope="col">GD</th>
             <th scope="col">Pts</th>
         </tr>
     </thead>
+    @{var i = 0; }
     @foreach (var team in group.Teams)
     {
+        
         <tbody>
             <tr>
-                <td>#</td>
+                <td>
+                    @{i++;}
+                    @i
+                </td>
                 <td>@team.Name</td>
                 <td>@team.GoalsFwd</td>
                 <td>@team.GoalsAg</td>
@@ -39,7 +42,31 @@
             </tr>
         </tbody>
     }
-</table>
+</table>    
 }
+<table class="table table-primary">
+    <thead>
+        <tr>
+            <td colspan="3" style="text-align:center">Matchday-1</td>
+        </tr>
+        <tr>
+            <th scope="col">Team-1</th>
+            <th scope="col">Team-2</th>
+            <th scope="col">result</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var match in Model.Matches)
+        {
+            <tr>
+                <td>@match.FirstTeam</td>
+                <td>@match.SecondTeam</td>
+                <td>@match.Result</td>                
+            </tr>
+        }
+    </tbody>
+</table>
+
+
 
 

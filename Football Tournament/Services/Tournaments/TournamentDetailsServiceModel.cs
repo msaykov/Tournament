@@ -17,6 +17,8 @@
 
         public bool IsStarted { get; set; }
 
-        public bool IsFinished { get; set; } 
+        public bool IsFinished { get; set; }
+
+        public ICollection<ScheduleServiceModel> Matches { get; set; }
     }
 }

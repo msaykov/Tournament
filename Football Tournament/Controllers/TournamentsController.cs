@@ -39,7 +39,7 @@
 
         public IActionResult Start(int id)
         {
-            this.tournament.SeedGroups(id);
+            this.tournament.SeedGroups(id);            
             return RedirectToAction("Details", "Tournaments", new { id = id });
         }
 
@@ -49,7 +49,10 @@
         }
 
         public IActionResult Details(int id)
-        => View(tournament.Details(id));
+        {
+            //this.tournament.CreateSchedule(id);
+            return View(tournament.Details(id)); 
+        }
         
 
         public IActionResult History()

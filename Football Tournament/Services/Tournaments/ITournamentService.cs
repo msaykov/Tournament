@@ -14,5 +14,7 @@
         void SeedGroups(int id);
 
         TournamentDetailsServiceModel Details(int id);
+
+        //void CreateSchedule(int id);
     }
 }
