@@ -14,8 +14,9 @@
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Match> Matches { get; set; }
 
-        
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,6 +37,12 @@
                 .HasOne(g => g.Tournament)
                 .WithMany(t => t.Groups)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+               .Entity<Match>()
+               .HasOne(m => m.Team)
+               .WithMany(t => t.Matches)
+               .OnDelete(DeleteBehavior.Restrict);
 
 
             base.OnModelCreating(builder);

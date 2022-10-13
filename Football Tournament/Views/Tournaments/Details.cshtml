@@ -58,13 +58,17 @@
     <tbody>
         @foreach (var match in Model.Matches)
         {
-            <tr>
-                <td>@match.FirstTeam</td>
-                <td>@match.SecondTeam</td>
-                <td>@match.Result</td>                
-            </tr>
+        <tr>
+            <td>@match.FirstTeam</td>
+            <td>@match.SecondTeam</td>
+            <td>@match.Result</td>
+            <td>
+                <a asp-controller="Teams" asp-action="EditMatch" asp-route-id="@match.MatchId" class="btn btn-primary" role="button">Edit</a>
+            </td>  
+        </tr>
+
         }
-    </tbody>
+    </tbody>    
 </table>
 
 

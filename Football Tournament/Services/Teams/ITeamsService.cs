@@ -12,5 +12,11 @@
 
         ICollection<TeamViewModel> AllTeams(int id);
 
+        void AddMatch(string homeTeam, string awayTeam);
+
+        EditMatchServiceModel EditMatch(int matchId);
+
+        void EditMatch(int id, int homeTeamGoals, int awayTeamGoals, int homeTeamPenalities, int awayTeamPenalities);
+
     }
 }

@@ -29,7 +29,7 @@ namespace Football_Tournament
 
             services.AddControllersWithViews();
             services.AddTransient<ITournamentService, TournamentService>();
-            services.AddTransient<ITeamsService, TeamService>();
+            services.AddTransient<ITeamsService, TeamsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

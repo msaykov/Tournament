@@ -10,9 +10,12 @@
     public class TournamentService : ITournamentService
     {
         private readonly TournamentDbContext data;
+        
 
         public TournamentService(TournamentDbContext data)
-        => this.data = data;
+        {
+            this.data = data;
+        }
 
         public ICollection<TournamentInfoServiceModel> AllTournaments()
             => this.data
@@ -68,7 +71,34 @@
             AddTeamsToGroups(allTeams, tournament);
             this.data.SaveChanges();
 
+
+            var groups = GetGroupsByTournamentId(id);
+            foreach (var group in groups)
+            {
+                var currentGroupTeams = GetTeamsByGroupId(group.Id);
+                for (int i = 0; i < currentGroupTeams.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < currentGroupTeams.Count; j++)
+                    {
+                        var matchEntity = new Match
+                        {
+                            HomeTeam = currentGroupTeams[i].Name,
+                            AwayTeam = currentGroupTeams[j].Name,
+                            IsPlayed = false,
+                        };
+                        currentGroupTeams[i].Matches.Add(matchEntity);
+                        currentGroupTeams[j].Matches.Add(matchEntity);
+                        this.data
+                            .Add(matchEntity);
+                    }
+                }
+            }
+            
+            this.data.SaveChanges();
+
         }
+
+
 
         public TournamentDetailsServiceModel Details(int id)
         {
@@ -79,6 +109,7 @@
                 .Where(t => t.Group.TournamentId == id)
                 .OrderByDescending(t => t.Points)
                 .ThenByDescending(t => t.GoalDifference)
+                .ThenByDescending(t => t.Penalities)
                 .ToList();
 
 
@@ -86,19 +117,27 @@
             foreach (var group in groups)
             {
                 var currentGroupTeams = GetTeamsByGroupId(group.Id);
-                for (int i = 0; i < currentGroupTeams.Count - 1; i++)
+                foreach (var team in currentGroupTeams)
                 {
-                    for (int j = i + 1; j < currentGroupTeams.Count; j++)
+                    var matches = this.data
+                        .Matches
+                        .Where(m => m.TeamId == team.Id)
+                        .ToList();
+                    foreach (var match in matches)
                     {
                         var currentMatch = new ScheduleServiceModel
                         {
-                            FirstTeam = currentGroupTeams[i].Name,
-                            SecondTeam = currentGroupTeams[j].Name,
-                            Result = "-- : --",
+                            MatchId = match.Id,
+                            FirstTeam = match.HomeTeam,
+                            SecondTeam = match.AwayTeam,
+                            Result = match.IsPlayed == false ? "-- : --" : $"{match.HomeTeamGoals} : {match.AwayTeamGoals}",
+                            
                         };
                         schedule.Add(currentMatch);
                     }
+                    
                 }
+                
             }
 
             return new TournamentDetailsServiceModel
@@ -114,9 +153,7 @@
 
         }
 
-
         
-
         private Tournament GetTournamentById(int id)
             => this.data
                    .Tournaments

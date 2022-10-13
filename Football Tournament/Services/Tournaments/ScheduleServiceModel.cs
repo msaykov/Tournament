@@ -4,6 +4,7 @@
 
     public class ScheduleServiceModel
     {
+        public int MatchId { get; set; }
         public string FirstTeam { get; set; }
         public string SecondTeam { get; set; }
         public string Result { get; set; }

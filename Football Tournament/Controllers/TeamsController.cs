@@ -37,7 +37,22 @@
             });
         }
 
+        public IActionResult EditMatch(int id)
+        => View(team.EditMatch(id));
 
+        [HttpPost]
+        public IActionResult EditMatch(int id, EditMatchServiceModel model)    // TO DO  ->  id is MatchId   and  tournamentId = 0  ???
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(team.EditMatch(id));
+            }
+
+            team.EditMatch(id, model.HomeTeamGoals, model.AwayTeamGoals, model.HomeTeamPenalities, model.AwayTeamPenalities);
+
+            //return RedirectToAction("Details", "Tournaments", new { id = tournamentId });  
+            return RedirectToAction("All", "Tournaments");  
+        }
 
     }
 }

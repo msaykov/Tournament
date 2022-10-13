@@ -7,6 +7,10 @@
 
     public class Team
     {
+        public Team()
+        {
+            this.Matches = new List<Match>();
+        }
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -34,6 +38,8 @@
         public Tournament Tournament { get; set; }
 
         public bool IsSelected { get; set; }
+
+        public ICollection<Match> Matches { get; set; }
 
 
     }

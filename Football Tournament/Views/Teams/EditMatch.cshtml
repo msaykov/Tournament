@@ -1,0 +1,47 @@
+﻿@model EditMatchServiceModel;
+@{
+    ViewData["Title"] = "Edit Match";
+}
+
+<div class="text-center">
+    <h1 class="item-title">@ViewData["Title"]</h1>
+</div>
+
+
+<form method="post">
+    <div class="input-group mb-3" style="text-align:center">
+        <div class="col-md-2">
+            <label asp-for="HomeTeam"></label>
+            <input asp-for="HomeTeam" class="form-control" id="validationTooltip01">
+            <span asp-validation-for="HomeTeam" class="small text-danger"></span>
+        </div>
+        <div class="col-md-2">
+            <label asp-for="AwayTeam"></label>
+            <input asp-for="AwayTeam" class="form-control" id="validationTooltip01">
+            <span asp-validation-for="AwayTeam" class="small text-danger"></span>
+        </div>
+        <div class="col-md-2">
+            <label asp-for="HomeTeamGoals"></label>
+            <input asp-for="HomeTeamGoals" class="form-control" id="validationTooltip01">
+            <span asp-validation-for="HomeTeamGoals" class="small text-danger"></span>
+        </div>
+        <div class="col-md-2">
+            <label asp-for="AwayTeamGoals"></label>
+            <input asp-for="AwayTeamGoals" class="form-control" id="validationTooltip01">
+            <span asp-validation-for="AwayTeamGoals" class="small text-danger"></span>
+        </div>
+        <div class="col-md-2">
+            <label asp-for="HomeTeamPenalities"></label>
+            <input asp-for="HomeTeamPenalities" class="form-control" id="validationTooltip01">
+            <span asp-validation-for="HomeTeamPenalities" class="small text-danger"></span>
+        </div>
+        <div class="col-md-2">
+            <label asp-for="AwayTeamPenalities"></label>
+            <input asp-for="AwayTeamPenalities" class="form-control" id="validationTooltip01">
+            <span asp-validation-for="AwayTeamPenalities" class="small text-danger"></span>
+        </div>
+    </div>
+
+    <button class="btn btn-primary">Edit</button>
+    <a asp-controller="Tournaments" asp-action="Details" asp-route-id="@Model.TournamentId" class="btn btn-danger" role="button">Cancel</a>
+</form>

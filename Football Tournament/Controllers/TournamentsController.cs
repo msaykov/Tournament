@@ -7,6 +7,7 @@
     public class TournamentsController : Controller
     {
         private readonly ITournamentService tournament;
+
         public TournamentsController(ITournamentService tournamentService)
         {
             this.tournament = tournamentService;
@@ -39,7 +40,7 @@
 
         public IActionResult Start(int id)
         {
-            this.tournament.SeedGroups(id);            
+            this.tournament.SeedGroups(id);
             return RedirectToAction("Details", "Tournaments", new { id = id });
         }
 
@@ -50,7 +51,6 @@
 
         public IActionResult Details(int id)
         {
-            //this.tournament.CreateSchedule(id);
             return View(tournament.Details(id)); 
         }
         
